@@ -14,7 +14,7 @@ import argparse
 import datetime
 import uuid
 
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 t_delta = datetime.timedelta(hours=9)
 JST = datetime.timezone(t_delta, 'JST')
 
@@ -69,8 +69,7 @@ def do_upload():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--img_path', type=str, default="./demo/demo_examples/pikachu.png", help='Path to the input image')
-
+    parser.add_argument('--gpu', type=int, default=1, help='Use GPU or not')
     args = parser.parse_args()
 
     base_shape_dir = f"./exp/web"
@@ -78,7 +77,8 @@ if __name__ == "__main__":
 
     conf = get_config("zoedepth_nk", "infer")
     model= build_model(conf)
-    model = model.to(DEVICE)
+    device = "cuda" if args.gpu else "cpu"
+    model = model.to(device)
 
     print("run")
     run(host="0.0.0.0", port=8000, debug=True)

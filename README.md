@@ -1,4 +1,19 @@
 # **ZoeDepth: Combining relative and metric depth** (Official implementation)  <!-- omit in toc -->
+### web.py usage
+
+Environment setup: 
+
+```bash
+conda env create -n zoe --file environment.yml
+conda activate zoe
+```
+Simply run 
+```bash
+python web.py --gpu 1
+```
+--gpu 1 is using GPU, 0 is using CPU to inference
+
+---
 [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/isl-org/ZoeDepth)
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/shariqfarooq/ZoeDepth)
 
